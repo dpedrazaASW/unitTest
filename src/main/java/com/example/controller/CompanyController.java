@@ -25,7 +25,8 @@ public class CompanyController {
 	public ResponseEntity<?> getCompany(@PathVariable int id) {
 		
 		try {
-			return companyService.getCompany(id);
+			//return companyService.getCompany(id);
+			return new ResponseEntity<>(companyService.getCompany(id), HttpStatus.OK);
 		}catch(Exception e) {
 			System.out.println(e);
 			return new ResponseEntity<>("Ocurrio un error: "+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -38,7 +39,7 @@ public class CompanyController {
 	public ResponseEntity<?> createCompany(@RequestBody @Valid CompanyDTO companyToCreate) {
 	
 		try {
-			System.out.println(companyToCreate);
+			System.out.println("Controller: "+companyToCreate);
 			Integer id = companyService.createCompany(companyToCreate);
 			return new ResponseEntity<>(id, HttpStatus.OK);
 		}catch(Exception e) {

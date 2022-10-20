@@ -9,7 +9,12 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 @Validated
+@EqualsAndHashCode
+@ToString
 public class AnimalDTO {
 	
 	@NotBlank(message = "El tipo no puede ser vacio")

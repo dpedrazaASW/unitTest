@@ -31,15 +31,15 @@ public class CompanyServiceImpl implements CompanyService {
 	private CompanyRepository companyRepo;
 	
 	
-	public ResponseEntity<CompanyDTO> getCompany(int id){
+	public CompanyDTO getCompany(int id){
 		
 		Optional<Company> optCompany = companyRepo.findById(id);
 		if(optCompany.isEmpty()) {
 			throw new PropertyNotFoundException("No se encontro a la persona");
-		}
-		Company comp = optCompany.get();
+		} 
+		Company comp = optCompany.get(); 
 		
-		List<PersonDTO> personsResult = new ArrayList<>();
+		List<PersonDTO> personsResult = new ArrayList<>(); 
 		
 		for(Person p : comp.getWorkers()) {
 			PersonDTO personResult = new PersonDTO();
@@ -49,7 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
 			if(p.getAnimal() != null) {
 				AnimalDTO animalResult = new AnimalDTO();
 				
-				Animal animal = p.getAnimal();
+				Animal animal = p.getAnimal(); 
 				
 				animalResult.setBirth(animal.getBirth());
 				animalResult.setColor(animal.getColor());
@@ -63,7 +63,8 @@ public class CompanyServiceImpl implements CompanyService {
 		
 		CompanyDTO companyResult = new CompanyDTO(comp.getName(),comp.getRut(), personsResult);
 
-		return new ResponseEntity<>(companyResult, HttpStatus.OK);
+		//return new ResponseEntity<>(companyResult, HttpStatus.OK);
+		return companyResult;
 	}
 
 	public Integer createCompany(CompanyDTO companyToCreate){

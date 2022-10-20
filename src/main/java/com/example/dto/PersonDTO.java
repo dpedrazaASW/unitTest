@@ -6,7 +6,12 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 @Validated
+@EqualsAndHashCode
+@ToString
 public class PersonDTO {
 	
 	@NotBlank(message = "El nombre no puede ser vacio")
@@ -41,11 +46,4 @@ public class PersonDTO {
 	public void setAnimal(AnimalDTO animal) {
 		this.animal = animal;
 	}
-
-	@Override
-	public String toString() {
-		return "PersonDTO [name=" + name + ", age=" + age + "]";
-	}
-
-	
 }

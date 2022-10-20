@@ -9,7 +9,13 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 @Validated
+@EqualsAndHashCode
+@ToString
 public class CompanyDTO {
 	
 	@NotBlank(message = "El nombre no puede ser vacio")
@@ -56,10 +62,5 @@ public class CompanyDTO {
 
 	public void setWorkers(List<PersonDTO> workers) {
 		this.workers = workers;
-	}
-
-	@Override
-	public String toString() {
-		return "CompanyDTO [name=" + name + ", rut=" + rut + ", workers=" + workers + "]";
 	}
 }
